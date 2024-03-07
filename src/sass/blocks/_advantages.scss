@@ -5,7 +5,6 @@
         margin-top: 65px;
         display: flex;
         justify-content: space-between;
-        align-items: center;
     }
     &__item {
         display: flex;
@@ -29,6 +28,18 @@
         a {
             text-decoration: underline;
             color: #ff0000;
+        }
+    }
+    &__icon {
+        &_animated {
+            /* animation: heartbeat 1.5s ease infinite; сокращенно */
+            animation-name: heartbeat;
+            animation-duration: 1.5s;
+            animation-timing-function: ease;
+            animation-iteration-count: infinite;
+            &:hover {
+                animation-play-state: paused;
+            }
         }
     }
 }

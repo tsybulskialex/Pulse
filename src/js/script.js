@@ -9,8 +9,22 @@ $(document).ready(function(){
 			{
 				breakpoint: 992,
 				settings: {
-				  dots: true,
-				  arrows: false
+				  dots: false,
+				  arrows: true
+				}
+			},
+			{
+				breakpoint: 767,
+				settings: {
+					dots: false,
+					arrows: true
+				}
+			},
+			{
+				breakpoint: 575,
+				settings: {
+					dots: false,
+					arrows: true
 				}
 			}
 		]
@@ -151,4 +165,39 @@ $(document).ready(function(){
         });
         return false;
     });
+
+	/* smooth scroll and page up */
+	$(window).scroll(function(){
+		if ($(this).scrollTop() > 1600) {
+			$('.pageup').fadeIn();
+		} else {
+			$('.pageup').fadeOut();
+		}
+	});
+
+	/* плавный скролл вверх */
+	$("a[href=#up]").on('click', function(event) {
+
+		// Make sure this.hash has a value before overriding default behavior
+		if (this.hash !== "") {
+		  // Prevent default anchor click behavior
+		  event.preventDefault();
+	
+		  // Store hash
+		  const hash = this.hash;
+	
+		  // Using jQuery's animate() method to add smooth page scroll
+		  // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+		  $('html, body').animate({
+			scrollTop: $(hash).offset().top
+		  }, 800, function(){
+	
+			// Add hash (#) to URL when done scrolling (default click behavior)
+			window.location.hash = hash;
+		  });
+		} // End if
+	  });
+
+	/* добавили Wow */
+	new WOW().init();
 });
